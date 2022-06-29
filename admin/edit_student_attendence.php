@@ -3,7 +3,7 @@
 include "include/header.php";
 require_once "../connection.php";
 $id = $_GET['id'];
-$attendencesql = "SELECT * FROM attendence where id = '$id'";
+$attendencesql = "SELECT * FROM sattendence where id = '$id'";
 $attendenceresult = mysqli_query($conn,$attendencesql);
 $attendencerow=mysqli_fetch_assoc($attendenceresult);
 ?>
@@ -39,7 +39,10 @@ $attendencerow=mysqli_fetch_assoc($attendenceresult);
                                                 <?php } ?>
                                             </select>
                                         </div>
-                               
+                                        <div class="form-group">
+                                            <label>Roll Number:</label>
+                                            <input class="form-control" value="<?php echo $studentrow['roll']; ?>" name="rollno" type="number" required>
+                                        </div>
                                             <label>Take Attendence:</label><br>
                                             <label class="radio-inline">
                                                 <input type="radio" value="Present" name="attendence"  id="optionsRadiosInline1">Present

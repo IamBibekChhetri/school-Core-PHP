@@ -1,7 +1,7 @@
 <?php
 include "include/header.php";
 require_once "../connection.php";
-$sql = "SELECT * FROM attendence";
+$sql = "SELECT * FROM tattendence";
 $result = mysqli_query($conn,$sql);
 ?>
 
@@ -58,7 +58,7 @@ $result = mysqli_query($conn,$sql);
                                             <?php } else{ ?>
                                                 <a href="activated/teacherviewactive.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-success">Active</button></a>
                                                 <?php } ?>
-                                            <a href="reset_teacher_password.php?id=<?php echo $row['id']; ?>"><button class="btn btn-info">Reset Password</button></a></td>
+                                            </td>
                                         
                                            
                                         </tr>

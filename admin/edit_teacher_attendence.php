@@ -3,7 +3,7 @@
 include "include/header.php";
 require_once "../connection.php";
 $id = $_GET['id'];
-$attendencesql = "SELECT * FROM attendence where id = '$id'";
+$attendencesql = "SELECT * FROM tattendence where id = '$id'";
 $attendenceresult = mysqli_query($conn,$attendencesql);
 $attendencerow=mysqli_fetch_assoc($attendenceresult);
 ?>

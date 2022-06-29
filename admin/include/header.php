@@ -102,8 +102,8 @@ if(isset($_SESSION['admin'])!='admin'){
             <!-- /.navbar-top-links -->
 <!-- -------------------- Shortcut button ----------------------  -->
 
-<ul class="nav navbar-top-links navbar-right">
-<a href="addfaculty.php"><button class="btn btn-info">Faculty</button></a>
+        <ul class="nav navbar-top-links navbar-right">
+        <a href="taketeacherattendence.php"><button class="btn btn-info">Teacher Attendence</button></a>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <!-- <i class="fa fa-envelope fa-fw"></i>   -->
@@ -111,12 +111,12 @@ if(isset($_SESSION['admin'])!='admin'){
                     </a>
                     
                 </li>
-    </ul>
+        </ul>
 
 <!-- -------------------- Shortcut button ----------------------  -->
 
-<ul class="nav navbar-top-links navbar-right">
-<a href="addsection.php"><button class="btn btn-primary">Section</button></a>
+            <ul class="nav navbar-top-links navbar-right">
+            <a href="takestudentattendence.php"><button class="btn btn-primary">Students Attendence</button></a>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <!-- <i class="fa fa-envelope fa-fw"></i>   -->
@@ -203,6 +203,18 @@ if(isset($_SESSION['admin'])!='admin'){
                                 </li>
                                 <li>
                                     <a href="viewclass.php">View Class</a>
+                                </li>
+                            </ul>
+                        </li>
+                          <!-- Level details  -->
+                          <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Level<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="addlevel.php">Add Level</a>
+                                </li>
+                                <li>
+                                    <a href="viewlevel.php">View Level</a>
                                 </li>
                             </ul>
                         </li>

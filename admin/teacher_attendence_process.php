@@ -3,7 +3,7 @@ require_once "../connection.php";
 $teacherID = $_POST['teachername'];
 $attendence = $_POST['attendence'];
 
-$sql = "insert into attendence (teacher_id, tstatus) values('$teacherID', '$attendence')";
+$sql = "insert into tattendence (teacher_id, tstatus) values('$teacherID', '$attendence')";
 $query = mysqli_query($conn,$sql);
 
 if($query){

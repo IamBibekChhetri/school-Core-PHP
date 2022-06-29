@@ -2,8 +2,9 @@
 require_once "../connection.php";
 $studentID = $_POST['studentname'];
 $attendence = $_POST['attendence'];
+$rollnumber = $_POST['roll'];
 
-$sql = "insert into attendence (student_id, sstatus) values('$studentID', '$attendence')";
+$sql = "insert into sattendence (student_id, sstatus, roll) values('$studentID', '$attendence','$rollnumber')";
 $query = mysqli_query($conn,$sql);
 
 if($query){

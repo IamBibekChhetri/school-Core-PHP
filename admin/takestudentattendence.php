@@ -37,6 +37,10 @@ $result = mysqli_query($conn,$sql);
                                                 <?php } ?>
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Roll No:</label>
+                                            <input class="form-control" name="roll" required>
+                                        </div>
                                         <div class="form-group"> 
                                             <label>Take Attendence:</label>
                                             <label class="radio-inline">

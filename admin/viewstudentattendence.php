@@ -1,7 +1,7 @@
 <?php
 include "include/header.php";
 require_once "../connection.php";
-$sql = "SELECT * FROM attendence";
+$sql = "SELECT * FROM sattendence";
 $result = mysqli_query($conn,$sql);
 ?>
 
@@ -29,6 +29,8 @@ $result = mysqli_query($conn,$sql);
                                         <tr>
                                            <th>Student Name</th>
                                            <th>Student Attendence Status</th>
+                                           <th>Student Roll Number</th>
+                                           <th>Student Status</th>
                                             <th>action</th>
                                             </tr>
                                     </thead>
@@ -44,6 +46,7 @@ $result = mysqli_query($conn,$sql);
                                                     ?>                                        
                                         <td><?php echo $studentrow['studentName']; ?></td>
                                         <td><?php echo $row['sstatus']; ?></td>
+                                        <td><?php echo $row['roll']; ?></td>
                                         <td><?php echo $row['status']; ?></td>
                                           
                                         

@@ -6,7 +6,7 @@ require_once "../connection.php";
 
 $id = $_GET['id'];
 echo $id;
-$sql =  "DELETE FROM attendence  WHERE id = '$id'";
+$sql =  "DELETE FROM sattendence  WHERE id = '$id'";
 $result = mysqli_query($conn,$sql);
 
 if(!$result){
