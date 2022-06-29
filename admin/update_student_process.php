@@ -5,7 +5,6 @@ $studentname = $_POST['studentname'];
 $studentaddress = $_POST['address'];
 $studentemail = $_POST['email'];
 $studentphoto = $_FILES['studentpic']['name'];
-
 $studentdob = $_POST['dob'];
 $studentbirthplace = $_POST['placedob'];
 $studentage = $_POST['age'];
@@ -31,7 +30,7 @@ if($result){
 }
 }
 else{
-    $sql = "UPDATE students SET  studentName = '$studentname', address = '$studentaddress', email = '$studentemail', studentpic = '$studentphoto', dob = '$studentdob', birthplace = '$studentbirthplace', age = '$studentage', gender = '$studentgender', fathername = '$fathername', fatherprofession = '$fatherprofession', fathermob = '$fathermobile', mothername = '$mothername', motherprofession = '$motherprofession', mothermob = '$mothermobile' WHERE id = '$id'";
+    $sql = "UPDATE students SET  studentName = '$studentname', address = '$studentaddress', email = '$studentemail', dob = '$studentdob', birthplace = '$studentbirthplace', age = '$studentage', gender = '$studentgender', fathername = '$fathername', fatherprofession = '$fatherprofession', fathermob = '$fathermobile', mothername = '$mothername', motherprofession = '$motherprofession', mothermob = '$mothermobile' WHERE id = '$id'";
     $result = mysqli_query($conn,$sql);
     
     if($result){

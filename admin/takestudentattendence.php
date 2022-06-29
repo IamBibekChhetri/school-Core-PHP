@@ -9,7 +9,7 @@ $result = mysqli_query($conn,$sql);
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Student Attendence Take:</h1>
+                    <h1 class="page-header">Student Attendence:</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -19,44 +19,113 @@ $result = mysqli_query($conn,$sql);
                     <div class="panel panel-default">
 <!-- ----------------------Students details -------------------------------------------------- -->
                         <div class="panel-heading">
-                           1 .  &nbsp;  Student Attendence 
+                           1 .  &nbsp;  Attendence 
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" action="student_attendence_process.php" method = "Post">
+                                    
+<!-- ----------------------Class details -------------------------------------------------- -->
+                        
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
                                     <div class="form-group">
-                                            <label>Student Name:</label>
-                                            <select class="form-control" name="studentname">
-                                            <?php if (mysqli_num_rows($result)>0){ ?>
-                                            <?php while ($row=mysqli_fetch_array($result)){
-                                                      
-                                                    ?>
-                                                <option value=" <?php echo $row['id']; ?>">  <?php echo $row['studentName'];?> </option>
-                                                <?php } ?>
-                                                <?php } ?>
+                                            <label>Class:</label>
+                                            <select class="form-control" name="selectclass">
+
+
+                                            <?php
+                                            
+                                            $sql = "SELECT * FROM class where status = 'Active'";
+                                            $result = mysqli_query($conn,$sql);
+                                            while($row=mysqli_fetch_assoc($result)){?>
+                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['class'];?></option>
+                                                <?php } ?>                                                
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Roll No:</label>
-                                            <input class="form-control" name="roll" required>
-                                        </div>
-                                        <div class="form-group"> 
-                                            <label>Take Attendence:</label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="attendence" id="optionsRadiosInline1" value="Present" required>Present
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="attendence" id="optionsRadiosInline2" value="Absent"required>Absent
-                                            </label>
+                                
+                                    <div class="form-group">
+                                            <label>Section:</label>
+                                            <select class="form-control" name="selectclass">
+
+
+                                            <?php
                                             
+                                            $sql = "SELECT * FROM section where status = 'Active'";
+                                            $result = mysqli_query($conn,$sql);
+                                            while($row=mysqli_fetch_assoc($result)){?>
+                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['sectionname'];?></option>
+                                                <?php } ?>                                                
+                                            </select>
                                         </div>
-                                </div>
+                               </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div id="page-wrapper">
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            Semester Details 
+            </div>
 
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>Semester Name</th>
+                                <th>Semester Status</th>
+                                <th>action</th>
+                                </tr>
+
+                        </thead>
+                        <tbody>
+                            <?php if (mysqli_num_rows($result)>0){ ?> 
+
+                                      <?php while ($row=mysqli_fetch_array($result)){ ?>
+                                        <tr class="odd gradeX">
+                                <td><?php echo $row["semestername"]; ?></td>
+                                <td><?php echo $row["status"]; ?></td>
+
+     
+                                <td class="center"><a href="editsemester.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-primary">Edit</button></a>
+                                <a onclick= "return confirm('Are You sure you want to Delete?');" href="delete_semester.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-danger">Delete</button></a>
+                                
+                                 <?php
+
+                                if($row['status'] == 'Active'){ ?>
+                                    <a href="activated/semesterdeactive.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-danger">Deactive</button></a>
+
+                                <?php } else{ ?>
+                                    <a href="activated/semesteractive.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-success">Active</button></a>
+                                    </td>
+                            
+                                    <?php } ?>
+
+                            </tr>
+                                        
+                                      <?php } ?>
+                               <?php } ?>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                                <div>
          <button type="submit" class="btn btn-primary">Save</button>
                                         <button type="reset" class="btn btn-danger">Reset</button>
                                     </form>
