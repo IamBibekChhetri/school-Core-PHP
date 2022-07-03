@@ -33,6 +33,7 @@ $result = mysqli_query($conn,$sql);
                                             <th>Email</th>
                                             <th>DOB</th>
                                             <th>Age</th>
+                                            <th>Roll No:</th>
                                             <th>Gender</th>
                                             <th>Status</th>
                                             <th>action</th>
@@ -49,6 +50,7 @@ $result = mysqli_query($conn,$sql);
                                         <td><?php echo $row["email"]; ?></td>
                                         <td><?php echo $row["dob"]; ?></td>
                                         <td><?php echo $row["age"]; ?></td>
+                                        <td><?php echo $row["roll"]; ?></td>
                                         <td><?php echo $row["gender"]; ?></td>
                                         <td><?php echo $row["status"]; ?></td>
                                           

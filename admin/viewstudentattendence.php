@@ -39,14 +39,18 @@ $result = mysqli_query($conn,$sql);
 
                                             <?php while ($row=mysqli_fetch_array($result)){ ?>
                                         <tr class="odd gradeX">
-                                                <?php $studentsql = "SELECT * FROM students WHERE id = '$row[student_id]'";
-                                                      $studentquery = mysqli_query($conn, $studentsql);
-                                                      $studentrow=mysqli_fetch_array($studentquery);
-
-                                                    ?>                                        
+                                        <?php $studentsql = "SELECT * FROM students WHERE id = '$row[student_id]'";
+                                            $studentquery = mysqli_query($conn, $studentsql);
+                                            $studentrow=mysqli_fetch_array($studentquery);
+                                        ?>                                        
                                         <td><?php echo $studentrow['studentName']; ?></td>
                                         <td><?php echo $row['sstatus']; ?></td>
-                                        <td><?php echo $row['roll']; ?></td>
+                                        <?php $studentsql = "SELECT * FROM students WHERE id = '$row[roll_id]'";
+                                            $studentquery = mysqli_query($conn, $studentsql);
+                                            $studentrow=mysqli_fetch_array($studentquery);
+
+                                        ?> 
+                                        <td><?php echo $studentrow['roll']; ?></td>
                                         <td><?php echo $row['status']; ?></td>
                                           
                                         

@@ -57,6 +57,10 @@ include "include/header.php";
                                             <label>Age:</label>
                                             <input class="form-control" type="number" name="age" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Roll Number:</label>
+                                            <input class="form-control" type="number" name="roll" required>
+                                        </div>
                                        
                                     
                                         <div class="form-group"> 

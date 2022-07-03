@@ -11,6 +11,7 @@ $directory = "images/".$studentpic;
 $dob = $_POST['dob'];
 $dobplace = $_POST['dobplace'];
 $age = $_POST['age'];
+$rollno = $_POST['roll'];
 $gender = $_POST['gender'];
 $fathername = $_POST['fathername'];
 $fatherprofession = $_POST['fatherprofession'];
@@ -22,7 +23,7 @@ $status = $_POST['status'];
 
 
 
-$sql = "insert into students (studentName, address, email, password, studentpic, dob, birthplace, age, gender, fathername, fatherprofession, fathermob, mothername, motherprofession, mothermob, status) values('$studentname','$address', '$studentemail', '$mdstudentpassword', '$studentpic', '$dob', '$dobplace', '$age', '$gender', '$fathername', '$fatherprofession', '$fathermob', '$mothername', '$motherprofession', '$mothermob','$status')";
+$sql = "INSERT INTO students (studentName, address, email, password, studentpic, dob, birthplace, age, roll, gender, fathername, fatherprofession, fathermob, mothername, motherprofession, mothermob, status) values('$studentname','$address', '$studentemail', '$mdstudentpassword', '$studentpic', '$dob', '$dobplace', '$age', '$rollno', '$gender', '$fathername', '$fatherprofession', '$fathermob', '$mothername', '$motherprofession', '$mothermob','$status')";
 $query = mysqli_query($conn,$sql);
 
 if($query){

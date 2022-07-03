@@ -105,24 +105,28 @@ $row = mysqli_fetch_assoc($result);
 
                                 ?>
                                 <td><?php echo $studentrow["studentName"]; ?></td>
-                                <td><?php echo $row["roll"]; ?></td>
+
+                                <?php
+                                $studentsql = "SELECT * FROM students WHERE id = '$row[roll_id]'";
+                                $studentquery = mysqli_query($conn, $studentsql);
+                                $studentrow=mysqli_fetch_array($studentquery);
+                                ?>
+                                <td><?php echo $studentrow["roll"]; ?></td>
 
      
-                                <td class="center"><a href="editsemester.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-primary">Edit</button></a>
-                                <a onclick= "return confirm('Are You sure you want to Delete?');" href="delete_semester.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-danger">Delete</button></a>
-                                
-                                 <?php
-
-                                if($row['status'] == 'Active'){ ?>
-                                    <a href="activated/semesterdeactive.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-danger">Deactive</button></a>
-
-                                <?php } else{ ?>
-                                    <a href="activated/semesteractive.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-success">Active</button></a>
-                                    </td>
-                            
-                                    <?php } ?>
-
-                            </tr>
+                                <td class="center"><div class="form-group"> 
+                                            <label>Gender</label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="gender" id="optionsRadiosInline1" value="male" required>Male
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="gender" id="optionsRadiosInline2" value="female"required>Female
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="gender" id="optionsRadiosInline3" value="others" required>Others
+                                            </label>
+                                        </div>
+                                    </tr>
                                         
                                       <?php } ?>
                                <?php } ?>
