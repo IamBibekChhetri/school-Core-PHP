@@ -115,15 +115,15 @@ $row = mysqli_fetch_assoc($result);
 
      
                                 <td class="center"><div class="form-group"> 
-                                            <label>Gender</label>
+                                            
                                             <label class="radio-inline">
-                                                <input type="radio" name="gender" id="optionsRadiosInline1" value="male" required>Male
+                                                <input type="radio" name="attendence" id="optionsRadiosInline1" value="present" required>Present
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="gender" id="optionsRadiosInline2" value="female"required>Female
+                                                <input type="radio" name="attendence" id="optionsRadiosInline2" value="absent"required>Absent
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="gender" id="optionsRadiosInline3" value="others" required>Others
+                                                <input type="radio" name="attendence" id="optionsRadiosInline3" value="leave" required>Leave
                                             </label>
                                         </div>
                                     </tr>

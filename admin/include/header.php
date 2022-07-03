@@ -141,15 +141,13 @@ if(isset($_SESSION['admin'])!='admin'){
 
                         <!-- Faculty of students -->
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Faculty<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="addfaculty.php">Add Faculty</a>
-                                </li>
-                                <li>
-                                    <a href="viewfaculty.php">View Faculty</a>
-                                </li>
-                            </ul>
+                            <a href="viewfaculty.php"><i class="fa fa-bar-chart-o fa-fw"></i> Faculty</a>
+                            
+                            <!-- Level details  -->
+                          <li>
+                            <a href="viewlevel.php"><i class="fa fa-user fa-fw"></i> Level</span></a>
+                           
+                        </li>
                             <!-- /.nav-second-level -->
                         </li>
 
@@ -206,18 +204,7 @@ if(isset($_SESSION['admin'])!='admin'){
                                 </li>
                             </ul>
                         </li>
-                          <!-- Level details  -->
-                          <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> Level<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="addlevel.php">Add Level</a>
-                                </li>
-                                <li>
-                                    <a href="viewlevel.php">View Level</a>
-                                </li>
-                            </ul>
-                        </li>
+                          
 
                          <!-- Course details  -->
                          <li>
@@ -246,16 +233,8 @@ if(isset($_SESSION['admin'])!='admin'){
                         </li>
                     <!-- --------------  Author Details --------------- -->
                         <li>
-                            <a href="#"><i class="fa fa-folder-open fa-fw"></i> Author<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="addauthor.php">Add Author</a>
-                                </li>
-                                <li>
-                                    <a href="viewauthor.php">View Author</a>
-                                </li>
-                            </ul>
-                            
+                            <a href="viewauthor.php"><i class="fa fa-folder-open fa-fw"></i>Author</a>
+                                                        
                         </li>
 
 

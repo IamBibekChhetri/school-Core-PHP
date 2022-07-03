@@ -2,7 +2,7 @@
 require_once "../connection.php";
 $authorname = $_POST['authorname'];
 $status = $_POST['status'];
-$sql = "insert into author (authorname) values('$authorname')";
+$sql = "INSERT INTO author (authorname, status) values('$authorname','$status')";
 $query = mysqli_query($conn,$sql);
 
 if($query){
@@ -11,6 +11,5 @@ if($query){
 else{
     echo "<script>alert('Error')</script>";
 }
-
 
 ?>

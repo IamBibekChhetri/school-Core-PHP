@@ -7,13 +7,11 @@ $result = mysqli_query($conn,$sql);
 
 
  <div id="page-wrapper">
-
+ 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"> Faculty Details<a href="addfaculty.php"><button class="btn btn-primary" style="float:right; ">Add Faculty</button></a>
-                    </h1>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float:right; ">Add Faculty</button>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
  
             <!-- /.row -->
@@ -67,8 +65,40 @@ $result = mysqli_query($conn,$sql);
                     </div>
                 </div>
             </div>
-
-
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Faculty Add:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form role="form" action="author_add_process.php" method="Post">
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Enter Faculty</label>
+            <input class="form-control" name="facultyname" placeholder="Enter Faculty here" required>
+        </div>
+        <div class="form-group"> 
+            <label>Status:</label><br>
+            <label class="radio-inline">
+            <input type="radio" name="status" id="optionsRadiosInline1" value="Active" required>Active
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="status" id="optionsRadiosInline2" value="Deactive"required>Deactive
+            </label>
+            
+        </div>
+      </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Save</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+    </form>
+    </div>
+    </div>
+  </div>
+</div>
 <?php 
 include "include/footer.php"
 ?>
