@@ -44,7 +44,7 @@ $result = mysqli_query($conn,$sql);
 
                                                   <?php while ($row=mysqli_fetch_array($result)){ ?>
                                                     <tr class="odd gradeX">
-                                            <td><img src="images/<?php echo $row['teacherphoto']; ?>"height="50px"></td>
+                                            <td><img src="../images/<?php echo $row['teacherphoto']; ?>"height="50px"></td>
                                             <td><?php echo $row["teachername"]; ?></td>
                                             <td><?php echo $row["teacheraddress"]; ?></td>
                                             <td><?php echo $row["email"]; ?></td>

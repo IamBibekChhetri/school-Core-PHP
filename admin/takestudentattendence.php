@@ -4,6 +4,7 @@ include "include/header.php";
 require_once "../connection.php";
 $sql = "SELECT * FROM students";
 $result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <div id="page-wrapper">
@@ -45,7 +46,7 @@ $result = mysqli_query($conn,$sql);
                                                 <?php } ?>                                                
                                             </select>
                                         </div>
-                                
+
                                     <div class="form-group">
                                             <label>Section:</label>
                                             <select class="form-control" name="selectclass">
@@ -69,10 +70,11 @@ $result = mysqli_query($conn,$sql);
         </div>
     </div>
     </div>
-</div>
-<div id="page-wrapper">
-<!-- /.row -->
-<div class="row">
+    <?php
+$sql = "SELECT * FROM sattendence";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+?>
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -84,19 +86,26 @@ $result = mysqli_query($conn,$sql);
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr>
-                                <th>Semester Name</th>
-                                <th>Semester Status</th>
+                                <th>Students Name</th>
+                                <th>Roll No</th>
                                 <th>action</th>
-                                </tr>
+                            </tr>
 
                         </thead>
                         <tbody>
+
                             <?php if (mysqli_num_rows($result)>0){ ?> 
 
                                       <?php while ($row=mysqli_fetch_array($result)){ ?>
                                         <tr class="odd gradeX">
-                                <td><?php echo $row["semestername"]; ?></td>
-                                <td><?php echo $row["status"]; ?></td>
+                                <?php
+                                $studentsql = "SELECT * FROM students WHERE id = '$row[student_id]'";
+                                $studentquery = mysqli_query($conn, $studentsql);
+                                $studentrow=mysqli_fetch_array($studentquery);
+
+                                ?>
+                                <td><?php echo $studentrow["studentName"]; ?></td>
+                                <td><?php echo $row["roll"]; ?></td>
 
      
                                 <td class="center"><a href="editsemester.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-primary">Edit</button></a>
@@ -123,13 +132,12 @@ $result = mysqli_query($conn,$sql);
             </div>
         </div>
     </div>
-</div>
 
-                                <div>
+
          <button type="submit" class="btn btn-primary">Save</button>
-                                        <button type="reset" class="btn btn-danger">Reset</button>
-                                    </form>
-                                </div>
+         <button type="reset" class="btn btn-danger">Reset</button>
+    </form>
+</div>
 
 
 <?php
