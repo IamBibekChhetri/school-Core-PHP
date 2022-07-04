@@ -2,7 +2,7 @@
 <?php
 include "include/header.php";
 require_once "../connection.php";
-$sql = "SELECT * FROM students";
+$sql = "SELECT * FROM sattendence";
 $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -39,25 +39,25 @@ $row = mysqli_fetch_assoc($result);
 
                                             <?php
                                             
-                                            $sql = "SELECT * FROM class where status = 'Active'";
-                                            $result = mysqli_query($conn,$sql);
-                                            while($row=mysqli_fetch_assoc($result)){?>
-                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['class'];?></option>
+                                            $classsql = "SELECT * FROM class where status = 'Active'";
+                                            $classresult = mysqli_query($conn,$classsql);
+                                            while($classrow=mysqli_fetch_assoc($classresult)){?>
+                                                <option value="<?php echo $row['class_id']; ?>"><?php echo $classrow['class'];?></option>
                                                 <?php } ?>                                                
                                             </select>
                                         </div>
 
                                     <div class="form-group">
                                             <label>Section:</label>
-                                            <select class="form-control" name="selectclass">
+                                            <select class="form-control" name="selectsection">
 
 
                                             <?php
                                             
-                                            $sql = "SELECT * FROM section where status = 'Active'";
-                                            $result = mysqli_query($conn,$sql);
-                                            while($row=mysqli_fetch_assoc($result)){?>
-                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['sectionname'];?></option>
+                                            $sectionsql = "SELECT * FROM section where status = 'Active'";
+                                            $sectionresult = mysqli_query($conn,$sectionsql);
+                                            while($sectionrow=mysqli_fetch_assoc($sectionresult)){?>
+                                                <option value="<?php echo $row['section_id']; ?>"><?php echo $sectionrow['sectionname'];?></option>
                                                 <?php } ?>                                                
                                             </select>
                                         </div>
@@ -70,11 +70,13 @@ $row = mysqli_fetch_assoc($result);
         </div>
     </div>
     </div>
-    <?php
-$sql = "SELECT * FROM sattendence";
-$result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_assoc($result);
-?>
+
+    
+        <?php
+        $sql = "SELECT * FROM students";
+        $result = mysqli_query($conn,$sql);
+        ?>
+        
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -98,34 +100,28 @@ $row = mysqli_fetch_assoc($result);
 
                                       <?php while ($row=mysqli_fetch_array($result)){ ?>
                                         <tr class="odd gradeX">
-                                <?php
-                                $studentsql = "SELECT * FROM students WHERE id = '$row[student_id]'";
-                                $studentquery = mysqli_query($conn, $studentsql);
-                                $studentrow=mysqli_fetch_array($studentquery);
+                                
+                                <td><input type="hidden" value="<?php echo $row["id"]; ?>" name="studentname"><?php echo $row["studentName"]; ?></td>
+                                
 
-                                ?>
-                                <td><?php echo $studentrow["studentName"]; ?></td>
-
-                                <?php
-                                $studentsql = "SELECT * FROM students WHERE id = '$row[roll_id]'";
-                                $studentquery = mysqli_query($conn, $studentsql);
-                                $studentrow=mysqli_fetch_array($studentquery);
-                                ?>
-                                <td><?php echo $studentrow["roll"]; ?></td>
+                               
+                                <td><?php echo $row["roll"]; ?><input type="hidden" value="<?php echo $row["id"]; ?>" name="roll"></td>
 
      
-                                <td class="center"><div class="form-group"> 
+                                <td class="center">
+                                    <div class="form-group"> 
                                             
                                             <label class="radio-inline">
-                                                <input type="radio" name="attendence" id="optionsRadiosInline1" value="present" required>Present
+                                                <input type="radio" name="attendence" id="optionsRadiosInline1" value="Present" required>Present
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="attendence" id="optionsRadiosInline2" value="absent"required>Absent
+                                                <input type="radio" name="attendence" id="optionsRadiosInline2" value="Absent"required>Absent
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="attendence" id="optionsRadiosInline3" value="leave" required>Leave
+                                                <input type="radio" name="attendence" id="optionsRadiosInline3" value="Leave" required>Leave
                                             </label>
                                         </div>
+                                </td>
                                     </tr>
                                         
                                       <?php } ?>

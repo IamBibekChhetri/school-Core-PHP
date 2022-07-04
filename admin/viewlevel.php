@@ -49,7 +49,7 @@ $result = mysqli_query($conn,$sql);
                                     <td><?php echo $row["status"]; ?></td>
 
 
-                                            <td class="center"><a href="editlevel.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-primary">Edit</button></a>
+                                            <td class="center"><button class="btn btn-primary" data-toggle="modal" data-target="#editlevelmodal">Edit</button>
                                             <a onclick=" return confirm('Are You sure you want to Delete?');" href="delete_level.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-danger">Delete</button></a>
                                             
                                             <?php
@@ -63,6 +63,57 @@ $result = mysqli_query($conn,$sql);
                                         
                                                 <?php } ?>
                                     </tr>
+
+<div class="modal fade" id="editlevelmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Level Edit:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <form role="form" action="level_edit_process.php?id=<?php echo $levelrow['id']; ?>" method="Post">
+      <div class="modal-body">
+      
+      <div class="form-group">
+            <label>Select Faculty</label>
+            <select class="form-control" name="selectfaculty">
+
+            <?php
+            $facultysql = "SELECT * FROM faculty where status = 'Active'";
+            $facultyresult = mysqli_query($conn,$facultysql);
+            while($facultyrow=mysqli_fetch_assoc($facultyresult)){?>
+                <option value=" <?php echo $facultyrow['id']; ?>"><?php echo $facultyrow['name'];?></option>
+                <?php } ?>  
+
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>Enter Your Level</label>
+            <input class="form-control" value="<?php echo $row['level']; ?>" name="editlevel">
+        </div>
+        <div class="form-group"> 
+            <label>Status:</label><br>
+            <label class="radio-inline">
+            <input type="radio" name="status" id="optionsRadiosInline1" value="Active" required>Active
+            </label>
+            <label class="radio-inline">
+            <input type="radio" name="status" id="optionsRadiosInline2" value="Deactive"required>Deactive
+            </label>
+            
+        </div>
+      </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Save</button>
+    <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+    </form>
+    </div>
+    </div>
+  </div>
+</div>
                                     <?php } ?>
                                            <?php } ?>
                                 
@@ -116,7 +167,7 @@ $result = mysqli_query($conn,$sql);
       </div>
       <div class="modal-footer">
       <button type="submit" class="btn btn-primary">Save</button>
-    <button type="reset" class="btn btn-danger">Reset</button>
+    <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
     </form>
     </div>
     </div>

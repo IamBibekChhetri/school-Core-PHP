@@ -28,11 +28,11 @@ $result = mysqli_query($conn,$sql);
                                     <thead>
                                         <tr>
                                            <th>Student Name</th>
-                                           <th>Student Attendence Status</th>
-                                           <th>Student Roll Number</th>
-                                           <th>Student Status</th>
-                                            <th>action</th>
-                                            </tr>
+                                          <th>class</th>
+                                          <th>Section</th>
+                                          <th>Roll No</th>
+                                          <th>Status</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                          <?php if (mysqli_num_rows($result)>0){ ?> 
@@ -44,7 +44,19 @@ $result = mysqli_query($conn,$sql);
                                             $studentrow=mysqli_fetch_array($studentquery);
                                         ?>                                        
                                         <td><?php echo $studentrow['studentName']; ?></td>
-                                        <td><?php echo $row['sstatus']; ?></td>
+
+                                        <?php $classsql = "SELECT * FROM class WHERE id = '$row[class_id]'";
+                                            $classquery = mysqli_query($conn, $classsql);
+                                            $classrow=mysqli_fetch_array($classquery);
+                                        ?>
+                                        <td><?php echo $classrow['class']; ?></td>
+
+                                        <?php $sectionsql = "SELECT * FROM section WHERE id = '$row[section_id]'";
+                                            $sectionquery = mysqli_query($conn, $sectionsql);
+                                            $sectionrow=mysqli_fetch_array($sectionquery);
+                                        ?>
+                                        <td><?php echo $sectionrow['sectionname']; ?></td>
+                                        
                                         <?php $studentsql = "SELECT * FROM students WHERE id = '$row[roll_id]'";
                                             $studentquery = mysqli_query($conn, $studentsql);
                                             $studentrow=mysqli_fetch_array($studentquery);

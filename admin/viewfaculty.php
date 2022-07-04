@@ -93,7 +93,7 @@ $result = mysqli_query($conn,$sql);
       </div>
       <div class="modal-footer">
       <button type="submit" class="btn btn-primary">Save</button>
-    <button type="reset" class="btn btn-danger">Reset</button>
+    <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
     </form>
     </div>
     </div>
