@@ -4,12 +4,15 @@ session_start();
 
 $otp = mt_rand(100000,999999); 
 
-$sql = "UPDATE user SET  otp = '$otp'";
+$sql = "UPDATE user SET  otp = '$otp' WHERE id = $id";
 $query = mysqli_query($conn, $sql);
+$row = mysqli_num_rows($query);
+$id=$query['id'];
+$_SESSION['id']= $id;
 
 
 
-if($query){
+if($row){
     
     header("Location: resetpassword.php");
 }

@@ -70,9 +70,7 @@ $row = mysqli_fetch_assoc($result);
         </div>
     </div>
     </div>
-
-    
-        <?php
+    <?php
         $sql = "SELECT * FROM students";
         $result = mysqli_query($conn,$sql);
         ?>
@@ -98,33 +96,36 @@ $row = mysqli_fetch_assoc($result);
 
                             <?php if (mysqli_num_rows($result)>0){ ?> 
 
-                                      <?php while ($row=mysqli_fetch_array($result)){ ?>
+                                      <?php  $i = 1;
+                                     while ($row=mysqli_fetch_array($result)){  
+                                       
+                                        ?>
+                                        
                                         <tr class="odd gradeX">
                                 
-                                <td><input type="hidden" value="<?php echo $row["id"]; ?>" name="studentname"><?php echo $row["studentName"]; ?></td>
+                                <td><input type="hidden" value="<?php echo $row["id"]; ?>" name="id[]"><?php echo $row["studentName"]; ?></td>
                                 
 
-                               
-                                <td><?php echo $row["roll"]; ?><input type="hidden" value="<?php echo $row["id"]; ?>" name="roll"></td>
-
+                                <td><?php echo $row["roll"]; ?><input type="hidden" value="<?php echo $row["id"]; ?>" name="roll[]"></td>
      
                                 <td class="center">
                                     <div class="form-group"> 
                                             
                                             <label class="radio-inline">
-                                                <input type="radio" name="attendence" id="optionsRadiosInline1" value="Present" required>Present
+                                                <input type="radio" name="attendence[<?php echo $row['id'] ?>]" id="optionsRadiosInline1" value="Present" required>Present
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="attendence" id="optionsRadiosInline2" value="Absent"required>Absent
+                                                <input type="radio" name="attendence[<?php echo $row['id'] ?>]" id="optionsRadiosInline2" value="Absent"required>Absent
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="attendence" id="optionsRadiosInline3" value="Leave" required>Leave
+                                                <input type="radio" name="attendence[<?php echo $row['id'] ?>]" id="optionsRadiosInline3" value="Leave" required>Leave
                                             </label>
                                         </div>
                                 </td>
                                     </tr>
                                         
-                                      <?php } ?>
+                                      <?php $i++; } 
+                                       ?>
                                <?php } ?>
                             </tbody>
                     </table>
@@ -138,8 +139,6 @@ $row = mysqli_fetch_assoc($result);
          <button type="reset" class="btn btn-danger">Reset</button>
     </form>
 </div>
-
-
 <?php
 include "include/footer.php";
 

@@ -152,6 +152,19 @@ if(isset($_SESSION['admin'])!='admin'){
                         </li>
 
 
+                        <!-- Semester details  -->
+                        <li>
+                            <a href="#"><i class="fa fa-frown-o fa-fw"></i> Semester<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="addsemester.php">Add Semester</a>
+                                </li>
+                                <li>
+                                    <a href="viewsemester.php">View Semester</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <!-- Section details  -->
                        <li>
                             <a href="#"><i class="fa fa-folder-open fa-fw"></i> Section<span class="fa arrow"></span></a>
@@ -161,6 +174,32 @@ if(isset($_SESSION['admin'])!='admin'){
                                 </li>
                                 <li>
                                     <a href="viewsection.php">View Section</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Course details  -->
+                        <li>
+                            <a href="#"><i class="fa fa-home fa-fw"></i> Course<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="addcourse.php">Add Course</a>
+                                </li>
+                                <li>
+                                    <a href="viewcourse.php">View Course</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Class details  -->
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Class<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="addclass.php">Add Class</a>
+                                </li>
+                                <li>
+                                    <a href="viewclass.php">View Class</a>
                                 </li>
                             </ul>
                         </li>
@@ -179,45 +218,27 @@ if(isset($_SESSION['admin'])!='admin'){
                             <!-- /.nav-second-level -->
                         </li>
 
-                        <!-- Semester details  -->
-                       <li>
-                            <a href="#"><i class="fa fa-frown-o fa-fw"></i> Semester<span class="fa arrow"></span></a>
+                        <!-- --------------  Author Details --------------- -->
+                        <li>
+                            <a href="viewauthor.php"><i class="fa fa-folder-open fa-fw"></i>Author</a>
+                                                        
+                        </li>
+
+
+                        <!-- Books details  -->
+                        <li>
+                            <a href="#"><i class="fa fa-book fa-fw"></i> Books<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="addsemester.php">Add Semester</a>
+                                    <a href="addbooks.php">Add Books</a>
                                 </li>
                                 <li>
-                                    <a href="viewsemester.php">View Semester</a>
+                                    <a href="viewbooks.php">View Books</a>
                                 </li>
                             </ul>
                         </li>
 
-                          <!-- Class details  -->
-                          <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> Class<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="addclass.php">Add Class</a>
-                                </li>
-                                <li>
-                                    <a href="viewclass.php">View Class</a>
-                                </li>
-                            </ul>
-                        </li>
-                          
-
-                         <!-- Course details  -->
-                         <li>
-                            <a href="#"><i class="fa fa-home fa-fw"></i> Course<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="addcourse.php">Add Course</a>
-                                </li>
-                                <li>
-                                    <a href="viewcourse.php">View Course</a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                          <!-- Subject details  -->
                          <li>
                             <a href="#"><i class="fa fa-trophy fa-fw"></i> Subject<span class="fa arrow"></span></a>
@@ -231,25 +252,10 @@ if(isset($_SESSION['admin'])!='admin'){
                             </ul>
                             
                         </li>
-                    <!-- --------------  Author Details --------------- -->
-                        <li>
-                            <a href="viewauthor.php"><i class="fa fa-folder-open fa-fw"></i>Author</a>
-                                                        
-                        </li>
+                    
 
 
-                         <!-- Subject details  -->
-                         <li>
-                            <a href="#"><i class="fa fa-book fa-fw"></i> Books<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="addbooks.php">Add Books</a>
-                                </li>
-                                <li>
-                                    <a href="viewbooks.php">View Books</a>
-                                </li>
-                            </ul>
-                        </li>
+                         
                             
                        <!-- Teacher details  -->
                        <li>

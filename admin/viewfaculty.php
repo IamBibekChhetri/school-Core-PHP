@@ -41,7 +41,7 @@ $result = mysqli_query($conn,$sql);
                                             <td><?php echo $row["name"]; ?></td>
                                             <td><?php echo $row["status"]; ?> </td>
                                             
-                                            <td class="center"><a href="editfaculty.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-primary">Edit</button></a>
+                                            <td class="center"><button class="btn btn-primary" data-toggle="modal" data-target="#editfacultymodel">Edit</button>
                                             <a onclick=" return confirm('Are You sure you want to Delete?');" href="delete_faculty.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-danger">Delete</button></a>
                                             <?php
 
@@ -53,9 +53,37 @@ $result = mysqli_query($conn,$sql);
                                                 </td>
                                         
                                                 <?php } ?>
-                                        
-                                        </tr>
-                                                    
+                                            </tr>
+                                       
+<div class="modal fade" id="editfacultymodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Faculty Edit:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <form role="form" action="update_faculty_process.php?id=<?php echo $facultyrow['id']; ?>" method = "Post">
+      <div class="modal-body">
+
+      <div class="form-group">
+          <label>Edit Faculty</label>
+          <input class="form-control" value="<?php echo $row['name']; ?>" name="editfacultyname">
+      </div>
+        
+        
+        
+      </div>
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Save</button>
+    <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+    </form>
+    </div>
+    </div>
+  </div>
+</div>
                                                   <?php } ?>
                                            <?php } ?>
                                         </tbody>
