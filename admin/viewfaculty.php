@@ -65,7 +65,7 @@ $result = mysqli_query($conn,$sql);
         </button>
       </div>
       
-      <form role="form" action="update_faculty_process.php?id=<?php echo $facultyrow['id']; ?>" method = "Post">
+      <form role="form" action="update_faculty_process.php?id=<?php echo $row['id']; ?>" method = "Post">
       <div class="modal-body">
 
       <div class="form-group">
