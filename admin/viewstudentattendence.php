@@ -63,20 +63,13 @@ $result = mysqli_query($conn,$sql);
 
                                         ?> 
                                         <td><?php echo $studentrow['roll']; ?></td>
-                                        <td><?php echo $row['status']; ?></td>
+                                        <td><?php echo $row['sstatus']; ?></td>
                                           
                                         
 
                                             <td class="center"><a href="edit_student_attendence.php?id=<?php echo $row['id']; ?>"><button class="btn btn-primary">Edit</button></a>
                                             <a onclick=" return confirm('Are You sure you want to Delete?');" href="delete_student_attendence.php?id=<?php echo $row['id']; ?>"><button class="btn btn-danger">Delete</button></a>
-                                            <?php
-                                            if($row['status'] == 'Active'){ ?>
-                                                <a href="activated/viewstudentdeactive.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-danger">Deactive</button></a>
-
-                                            <?php } else{ ?>
-                                                <a href="activated/viewstudentactive.php?id=<?php echo $row['id']; ?>"><button type="reset" class="btn btn-success">Active</button></a>
-                                                <?php } ?>
-                                        
+                                            </td>
                                         </tr>
 
                                          <?php } ?>

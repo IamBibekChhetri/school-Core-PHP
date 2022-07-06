@@ -8,31 +8,22 @@ $row = mysqli_fetch_assoc($result);
 ?>
 
 <div id="page-wrapper">
-            <div class="row">
+  
+ <form method="POST" action="student_attendence_process.php">
+   <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Student Attendence:</h1>
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-<!-- ----------------------Students details -------------------------------------------------- -->
+            
+    </div>
+    <div class="row">
+            <div class="panel panel-default">
                         <div class="panel-heading">
                            1 .  &nbsp;  Attendence 
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form role="form" action="student_attendence_process.php" method = "Post">
-                                    
-<!-- ----------------------Class details -------------------------------------------------- -->
-                        
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
+            </div>
+    
+    <div class="form-group">
                                             <label>Class:</label>
                                             <select class="form-control" name="selectclass">
 
@@ -42,12 +33,12 @@ $row = mysqli_fetch_assoc($result);
                                             $classsql = "SELECT * FROM class where status = 'Active'";
                                             $classresult = mysqli_query($conn,$classsql);
                                             while($classrow=mysqli_fetch_assoc($classresult)){?>
-                                                <option value="<?php echo $row['class_id']; ?>"><?php echo $classrow['class'];?></option>
+                                                <option value="<?php echo $classrow['id']; ?>"><?php echo $classrow['class'];?></option>
                                                 <?php } ?>                                                
                                             </select>
                                         </div>
 
-                                    <div class="form-group">
+                                        <div class="form-group">
                                             <label>Section:</label>
                                             <select class="form-control" name="selectsection">
 
@@ -57,87 +48,75 @@ $row = mysqli_fetch_assoc($result);
                                             $sectionsql = "SELECT * FROM section where status = 'Active'";
                                             $sectionresult = mysqli_query($conn,$sectionsql);
                                             while($sectionrow=mysqli_fetch_assoc($sectionresult)){?>
-                                                <option value="<?php echo $row['section_id']; ?>"><?php echo $sectionrow['sectionname'];?></option>
+                                                <option value="<?php echo $sectionrow['id']; ?>"><?php echo $sectionrow['sectionname'];?></option>
                                                 <?php } ?>                                                
                                             </select>
                                         </div>
-                               </div>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <?php
-        $sql = "SELECT * FROM students";
-        $result = mysqli_query($conn,$sql);
-        ?>
-        
-    <div class="col-lg-12">
-        <div class="panel panel-default">
+
+                                        </div> 
+                                        
+                                        <div class="row">
+
+                                       
+                      <div class="panel panel-default">
             <div class="panel-heading">
             Semester Details 
             </div>
-
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                        <thead>
-                            <tr>
-                                <th>Students Name</th>
-                                <th>Roll No</th>
-                                <th>action</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-
-                            <?php if (mysqli_num_rows($result)>0){ ?> 
-
-                                      <?php  $i = 1;
-                                     while ($row=mysqli_fetch_array($result)){  
-                                       
-                                        ?>
-                                        
-                                        <tr class="odd gradeX">
-                                
-                                <td><input type="hidden" value="<?php echo $row["id"]; ?>" name="id[]"><?php echo $row["studentName"]; ?></td>
-                                
-
-                                <td><?php echo $row["roll"]; ?><input type="hidden" value="<?php echo $row["id"]; ?>" name="roll[]"></td>
-     
-                                <td class="center">
-                                    <div class="form-group"> 
-                                            
-                                            <label class="radio-inline">
-                                                <input type="radio" name="attendence[<?php echo $row['id'] ?>]" id="optionsRadiosInline1" value="Present" required>Present
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="attendence[<?php echo $row['id'] ?>]" id="optionsRadiosInline2" value="Absent"required>Absent
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="attendence[<?php echo $row['id'] ?>]" id="optionsRadiosInline3" value="Leave" required>Leave
-                                            </label>
-                                        </div>
-                                </td>
-                                    </tr>
-                                        
-                                      <?php $i++; } 
-                                       ?>
-                               <?php } ?>
-                            </tbody>
-                    </table>
-                </div>
             </div>
-        </div>
-    </div>
+            <div class="panel-body">
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <?php
+                                        $sql = "SELECT * FROM students";
+                                        $result = mysqli_query($conn,$sql);
+                                        ?>
+                <thead>
+                    <tr>
+                    <th>Students Name</th>
+                    <th>Roll No</th>
+                    <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if(mysqli_num_rows($result)) { ?>
+                       <?php  $i = 1;
+                            while ($row=mysqli_fetch_array($result)){ ?>
+                    
+                    <tr>
+
+                        <td><input type="hidden" value="<?php echo $row['id']; ?>" name="studentid[]" ><?php echo $row['studentName'] ?></td>
+                        <td><input type="hidden" value="<?php echo $row['roll']; ?>" name="rollno[]"><?php echo $row['roll'] ?></td>
+                        <td>
+                                <label class="radio-inline">
+                                    <input type="radio" name="att<?php echo $i; ?>" value="Absent" checked="checked">Absent 
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="att<?php echo $i; ?>" value="Present">Present 
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="att<?php echo $i; ?>" value="Leave">Leave 
+                                </label>
+                        </td>
+                        
+                    </tr>
+                    <?php $i++;
+                     } 
+                    
+                    ?>
+                <?php } ?>
+                </tbody>
+            </table>
+
+            </div>
+            </div>
 
 
-         <button type="submit" class="btn btn-primary">Save</button>
-         <button type="reset" class="btn btn-danger">Reset</button>
-    </form>
+</div>
+
+<button type="submit" class="btn btn-primary">Save</button>
+<button type="reset" class="btn btn-danger">Reset</button>
+ </form>
 </div>
 <?php
 include "include/footer.php";
